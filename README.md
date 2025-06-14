@@ -1,2 +1,2 @@
 # BFS-Tree
-Create a graph and run BFS on it to see its BFS tree
+Create a graph and run BFS on it to get a shortest path tree
