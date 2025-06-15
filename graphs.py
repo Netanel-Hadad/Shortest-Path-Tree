@@ -1,3 +1,9 @@
+"""
+This file contains all the classes related to the graphs
+such as edge, vertex and graph
+Contaions also the BFS algorithm function
+"""
+
 import heapq
 import math
 
