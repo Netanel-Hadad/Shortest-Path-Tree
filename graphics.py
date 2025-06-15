@@ -1,3 +1,7 @@
+"""
+The file contains classes used for rendering the graph
+"""
+
 import graphs
 import pygame
 import math

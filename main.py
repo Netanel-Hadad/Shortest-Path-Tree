@@ -1,3 +1,9 @@
+"""
+Program main entry file.
+This file contains all the program constants, logic and rendering loop.
+Handles all input from the user and draws everything on the screen using the pygame library.
+"""
+
 import graphs
 import graphics
 import time
