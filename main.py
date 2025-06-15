@@ -139,13 +139,26 @@ def main():
                             else:
                                 # select vertex as an ending point for a new edge
                                 new_edge_end_vertex = v
-                                # create the new edge
-                                new_edge = graphs.Edge(new_edge_start_vertex.vertexInfo, new_edge_end_vertex.vertexInfo)
-                                edgesObjects.append(graphics.edgeObject(new_edge, EDGE_COLOR))
-                                G.add_edge(new_edge)
-                                new_edge_start_vertex.color = VERTEX_CIRCLE_COLOR
-                                new_edge_start_vertex = None
-                                new_edge_end_vertex = None
+                                # check if the new edge the user wants to add exists already
+                                valid = True
+                                # check if user tries to create an edge from a vertex to himself
+                                if new_edge_start_vertex is new_edge_end_vertex:
+                                    valid = False
+                                else:
+                                    # check if the edge the user wants to create exists already
+                                    for e in edgesObjects:
+                                        if (e.edgeInfo.start is new_edge_start_vertex.vertexInfo and e.edgeInfo.end is new_edge_end_vertex.vertexInfo) or \
+                                                (e.edgeInfo.end is new_edge_start_vertex.vertexInfo and e.edgeInfo.start is new_edge_end_vertex.vertexInfo):
+                                            valid = False
+                                            continue
+                                # create the new edge, only if it doesnt exist already
+                                if valid is True:
+                                    new_edge = graphs.Edge(new_edge_start_vertex.vertexInfo, new_edge_end_vertex.vertexInfo)
+                                    edgesObjects.append(graphics.edgeObject(new_edge, EDGE_COLOR))
+                                    G.add_edge(new_edge)
+                                    new_edge_start_vertex.color = VERTEX_CIRCLE_COLOR
+                                    new_edge_start_vertex = None
+                                    new_edge_end_vertex = None
             
             # user pressed a keyboard key
             elif event.type == pygame.KEYDOWN:
@@ -192,6 +205,4 @@ if __name__ == "__main__":
   main()
 
   # TODO:
-  # before adding a new edge, check if it already exists
-  # save and load system
-  # pressing right click twice on the same vertex cause crash
+  #   # save and load system
