@@ -18,6 +18,7 @@ VERTEX_KEY_TEXT_SIZE = 48
 SELECTED_VERTEX_CIRCLE_COLOR = (0, 0, 255) # currently blue
 SOURCE_VERTEX_CIRCLE_COLOR = (255, 204, 0) # currently orange
 VERTEX_IN_BFS_COLOR = (102, 204, 0) # currently green
+INSTRUCTIONS_LABEL_TEXT_SIZE = 29
 
 EDGE_IN_BFS_COLOR = (102, 204, 0) # currently green
 EDGE_COLOR = (0, 0, 0) # currently black
@@ -38,7 +39,7 @@ def main():
 
     # font info
     sysfont = pygame.font.get_default_font()
-    font = pygame.font.SysFont(None, VERTEX_KEY_TEXT_SIZE)
+    font = pygame.font.SysFont(None, VERTEX_KEY_TEXT_SIZE) 
 
     # holds the graph's info
     G = graphs.Graph()
@@ -151,7 +152,7 @@ def main():
                                                 (e.edgeInfo.end is new_edge_start_vertex.vertexInfo and e.edgeInfo.start is new_edge_end_vertex.vertexInfo):
                                             valid = False
                                             continue
-                                # create the new edge, only if it doesnt exist already
+                                # create the new edge
                                 if valid is True:
                                     new_edge = graphs.Edge(new_edge_start_vertex.vertexInfo, new_edge_end_vertex.vertexInfo)
                                     edgesObjects.append(graphics.edgeObject(new_edge, EDGE_COLOR))
@@ -172,7 +173,7 @@ def main():
 
             # ---------- End of handling user input ---------- #
 
-            # ---------- Drawing graph on screen ---------- #
+            # ---------- Rendering ---------- #
 
             # draw edges on the main screen
             # we want to draw the edges before the vertecies so they will be under them
@@ -191,9 +192,14 @@ def main():
                     pygame.draw.circle(main_window, v.color, v.position, v.radius)  
                     # draw text inside the circle with the vertex key as value
                     img = font.render(v.vertexInfo.key, True, VERTEX_KEY_TEXT_COLOR)    
-                    main_window.blit(img, (v.position[0] - 12.5, v.position[1] - 12.5))   
+                    main_window.blit(img, (v.position[0] - 12.5, v.position[1] - 12.5)) 
 
-            # ---------- End of drawing graph on screen ---------- #
+            font = pygame.font.SysFont(None, INSTRUCTIONS_LABEL_TEXT_SIZE) 
+            img = font.render("Double left click to add vertex, right click on 2 different vertecies to add an edge between them, middle mouse click on a vertex to get its shortest path tree", True, (255, 0, 0))    
+            main_window.blit(img, (0, 0))  
+            font = pygame.font.SysFont(None, VERTEX_KEY_TEXT_SIZE) 
+
+            # ---------- End of rendering ---------- #
                 
             pygame.display.update()
 
@@ -203,6 +209,4 @@ def main():
 
 if __name__ == "__main__":
   main()
-
-  # TODO:
-  #   # save and load system
+  
