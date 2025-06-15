@@ -18,7 +18,9 @@ VERTEX_KEY_TEXT_SIZE = 48
 SELECTED_VERTEX_CIRCLE_COLOR = (0, 0, 255) # currently blue
 SOURCE_VERTEX_CIRCLE_COLOR = (255, 204, 0) # currently orange
 VERTEX_IN_BFS_COLOR = (102, 204, 0) # currently green
-INSTRUCTIONS_LABEL_TEXT_SIZE = 29
+
+INSTRUCTIONS_LABEL_TEXT = "Double left click to add a new vertex, right click on 2 different vertecies to create an edge between them, middle mouse click on a vertex to create its shortest path tree"
+INSTRUCTIONS_LABEL_TEXT_SIZE = 27
 
 EDGE_IN_BFS_COLOR = (102, 204, 0) # currently green
 EDGE_COLOR = (0, 0, 0) # currently black
@@ -194,8 +196,9 @@ def main():
                     img = font.render(v.vertexInfo.key, True, VERTEX_KEY_TEXT_COLOR)    
                     main_window.blit(img, (v.position[0] - 12.5, v.position[1] - 12.5)) 
 
+            # render an instructions label, set new font size and then change it back
             font = pygame.font.SysFont(None, INSTRUCTIONS_LABEL_TEXT_SIZE) 
-            img = font.render("Double left click to add vertex, right click on 2 different vertecies to add an edge between them, middle mouse click on a vertex to get its shortest path tree", True, (255, 0, 0))    
+            img = font.render(INSTRUCTIONS_LABEL_TEXT, True, (255, 0, 0))    
             main_window.blit(img, (0, 0))  
             font = pygame.font.SysFont(None, VERTEX_KEY_TEXT_SIZE) 
 
