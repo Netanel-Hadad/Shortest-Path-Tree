@@ -16,6 +16,7 @@ Create vertecies by pressing on the screen, connect them with edges and run BFS 
 * Right click on two vertecies to create an edge between them.
 * Middle mouse-click to run a BFS on a vertex, making selected vertex the source.
 * Press R to remove all vertecies and edges.
+* Right clicking on a selcted vertex will unselect it.
 
 ## Examples
 ![Screenshot 2025-06-14 214503](https://github.com/user-attachments/assets/189d4fb6-8c61-42a4-8d33-ba3b0e28a12a)
