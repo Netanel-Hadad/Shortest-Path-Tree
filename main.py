@@ -12,7 +12,7 @@ from pygame.locals import *
 import string
 import math
 
-TITLE = "BFS Tree"
+TITLE = "Shortest Path Tree"
 MAIN_WINDOW_HEIGHT = 1500 # fixed height
 MAIN_WINDOW_WIDTH = 1000 # fixed width
 MAIN_WINDOW_BACKGROUND_COLOR = (255, 255, 255) # currently white
