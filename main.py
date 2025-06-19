@@ -25,9 +25,6 @@ SELECTED_VERTEX_CIRCLE_COLOR = (0, 0, 255) # currently blue
 SOURCE_VERTEX_CIRCLE_COLOR = (255, 204, 0) # currently orange
 VERTEX_IN_BFS_COLOR = (102, 204, 0) # currently green
 
-INSTRUCTIONS_LABEL_TEXT = "Double left click to add a new vertex, right click on 2 different vertecies to create an edge between them, middle mouse click on a vertex to create its shortest path tree"
-INSTRUCTIONS_LABEL_TEXT_SIZE = 27
-
 EDGE_IN_BFS_COLOR = (102, 204, 0) # currently green
 EDGE_COLOR = (0, 0, 0) # currently black
 EDGE_THICKNESS = 10
@@ -114,6 +111,13 @@ def main():
 
                 # middle mouse click
                 elif event.button == 2:
+
+                    # reset vertecies and edges colors in case user already ran the algorithm
+                    for v in verteciesObjects:
+                        v.color = VERTEX_CIRCLE_COLOR
+                    for e in edgesObjects:
+                        e.color = EDGE_COLOR
+                    
                     for v in verteciesObjects:
                         distance = pygame.Vector2(v.position).distance_to(pygame.Vector2(mouse_position))
                         # user pressed on an existing vertex, run BFS
@@ -148,10 +152,13 @@ def main():
                             else:
                                 # select vertex as an ending point for a new edge
                                 new_edge_end_vertex = v
-                                # check if the new edge the user wants to add exists already
                                 valid = True
-                                # check if user tries to create an edge from a vertex to himself
+                                # check if user tries to create an edge from a vertex to himself,
+                                # if so reset the first vertex the user selected
                                 if new_edge_start_vertex is new_edge_end_vertex:
+                                    v.color = VERTEX_CIRCLE_COLOR
+                                    new_edge_start_vertex = None
+                                    new_edge_end_vertex = None
                                     valid = False
                                 else:
                                     # check if the edge the user wants to create exists already
@@ -201,12 +208,6 @@ def main():
                     # draw text inside the circle with the vertex key as value
                     img = font.render(v.vertexInfo.key, True, VERTEX_KEY_TEXT_COLOR)    
                     main_window.blit(img, (v.position[0] - 12.5, v.position[1] - 12.5)) 
-
-            # render an instructions label, set new font size and then change it back
-            font = pygame.font.SysFont(None, INSTRUCTIONS_LABEL_TEXT_SIZE) 
-            img = font.render(INSTRUCTIONS_LABEL_TEXT, True, (255, 0, 0))    
-            main_window.blit(img, (0, 0))  
-            font = pygame.font.SysFont(None, VERTEX_KEY_TEXT_SIZE) 
 
             # ---------- End of rendering ---------- #
                 
