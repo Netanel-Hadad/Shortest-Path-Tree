@@ -19,5 +19,4 @@ Create vertecies by pressing on the screen, connect them with edges and run BFS 
 * Right clicking on a selcted vertex will unselect it.
 
 ## Examples
-![Screenshot 2025-06-14 214503](https://github.com/user-attachments/assets/189d4fb6-8c61-42a4-8d33-ba3b0e28a12a)
-![Screenshot 2025-06-14 214517](https://github.com/user-attachments/assets/9708d13a-69bc-4a27-9841-c69aac262fcd)
+![BFS Tree 2025-06-19 17-58-28 (online-video-cutter com)](https://github.com/user-attachments/assets/6076b855-12f6-4720-902b-297c50ed57c7)
