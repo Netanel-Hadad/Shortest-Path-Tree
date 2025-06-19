@@ -14,7 +14,7 @@ Create vertecies by pressing on the screen, connect them with edges and run BFS 
 ## Usage
 * Double left-click to create a new vertex.
 * Right click on two vertecies to create an edge between them.
-* Middle mouse-click to run a BFS on a vertex, making selected vertex the source.
+* Middle mouse-click on a vertex to run a shortest path tree algorithm, making selected vertex the source.
 * Press R to remove all vertecies and edges.
 * Right clicking on a selcted vertex will unselect it.
 
